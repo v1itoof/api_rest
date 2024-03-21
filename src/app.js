@@ -6,11 +6,10 @@ dotenv.config();
 import './database';
 
 import express from 'express';
-import homeRoutes from './routes/homeRoutes';
 import userRoutes from './routes/userRoutes';
 import tokenRoutes from './routes/tokenRoutes';
-import alunoRoutes from './routes/alunoRoutes';
 import fotoRoutes from './routes/fotoRoutes';
+import noticiaRoutes from './routes/noticiaRoutes';
 
 class App {
   constructor() {
@@ -26,11 +25,10 @@ class App {
   }
 
   routes() {
-    this.app.use('/', homeRoutes);
     this.app.use('/users/', userRoutes);
     this.app.use('/tokens/', tokenRoutes);
-    this.app.use('/alunos/', alunoRoutes);
     this.app.use('/fotos/', fotoRoutes);
+    this.app.use('/noticias/', noticiaRoutes);
   }
 }
 
