@@ -31,6 +31,10 @@ export default class Noticia extends Model {
           isDate: true,
         },
       },
+      categoria: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       user_id: {
         type: Sequelize.INTEGER, // Assumindo que o id do usuário seja do tipo INTEGER
         allowNull: false,

@@ -22,6 +22,27 @@ export default class Foto extends Model {
           },
         },
       },
+      noticia_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'noticia',
+          key: 'id',
+        },
+      },
+      tipo: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: 'Campo tipo não pode ficar vazio.',
+          },
+        },
+      },
+      legenda: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       url: {
         type: Sequelize.VIRTUAL,
         get() {
@@ -36,6 +57,6 @@ export default class Foto extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.User, { foreignKey: 'user_id' });
+    this.belongsTo(models.Noticia, { foreignKey: 'noticia_id' });
   }
 }

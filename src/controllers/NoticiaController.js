@@ -43,6 +43,46 @@ class NoticiaController {
       return res.json(req.params);
     }
   }
+
+  // Update
+  async update(req, res) {
+    try {
+      const noticia = await Noticia.findByPk(req.body.id);
+
+      if (!noticia) {
+        return res.status(404).json({
+          errors: ['Noticia não encontrada!'],
+        });
+      }
+
+      const novoDados = await noticia.update(req.body);
+      return res.json(novoDados);
+    } catch (e) {
+      console.log(e);
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message),
+      });
+    }
+  }
+
+  // Delete
+  async delete(req, res) {
+    try {
+      const noticia = await Noticia.findByPk(req.body.id);
+
+      if (!noticia) {
+        return res.status(400).json({
+          errors: ['ID não enviado!'],
+        });
+      }
+
+      await noticia.destroy();
+      return res.json(noticia);
+    } catch (e) {
+      console.log(e);
+      return res.status(400).json(null);
+    }
+  }
 }
 
 export default new NoticiaController();
