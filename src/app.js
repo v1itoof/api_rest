@@ -10,6 +10,7 @@ import userRoutes from './routes/userRoutes';
 import tokenRoutes from './routes/tokenRoutes';
 import fotoRoutes from './routes/fotoRoutes';
 import noticiaRoutes from './routes/noticiaRoutes';
+import conteudoRoutes from './routes/conteudoRoutes';
 
 class App {
   constructor() {
@@ -29,6 +30,7 @@ class App {
     this.app.use('/tokens/', tokenRoutes);
     this.app.use('/fotos/', fotoRoutes);
     this.app.use('/noticias/', noticiaRoutes);
+    this.app.use('/conteudos/', conteudoRoutes);
   }
 }
 
